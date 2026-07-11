@@ -2,7 +2,7 @@
 *.heic
 IMG_*.jpg
 IMG_*.png
-MPLUSCodeLatin-VariableFont*.ttf
+*.ttf
 
 # Scratch
 _*.html
