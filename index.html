@@ -76,23 +76,30 @@
     background: var(--rule);
   }
 
-  /* A node on the spine. Filled = a heading, hollow = an entry. */
-  .node { position: relative; }
+  /* A node on the spine. Filled = a heading, hollow = an entry.
+     --node-size and --node-top are per-node so each dot centres on the
+     first line of text beside it, whatever size that text is. */
+  .node {
+    position: relative;
+    --node-size: 9px;
+    --node-top: 0.68rem;
+  }
   .node::before {
     content: "";
     position: absolute;
     left: calc(-1 * var(--gutter));
-    top: 0.62rem;
-    width: 9px; height: 9px;
-    margin-left: -4.5px;
+    top: var(--node-top);
+    width: var(--node-size);
+    height: var(--node-size);
+    margin-left: calc(var(--node-size) / -2);
     border-radius: 50%;
     background: var(--bg);
     border: 1px solid var(--node);
   }
+  .node.filled { --node-top: 0.45rem; }
   .node.filled::before {
     background: var(--ink);
     border-color: var(--ink);
-    top: 0.45rem;
   }
   .node.current::before {         /* where I am right now: solid, not hollow */
     background: var(--ink);
@@ -162,12 +169,15 @@
   .section:last-child { padding-bottom: 0; }
 
   .section-head {
-    font-size: 0.92rem;
+    --node-size: 13px;
+    --node-top: 0.66rem;
+    font-size: 1.9rem;
     font-weight: 500;
-    letter-spacing: 0.2em;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--ink);
-    margin-bottom: 2.6rem;
+    margin-bottom: 2.5rem;
   }
 
   .item { padding-bottom: 3rem; }
@@ -241,7 +251,14 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    .node::before, .node.filled::before { top: 0.55rem; }
+    .node { --node-top: 0.5rem; }
+    .node.filled { --node-top: 0.45rem; }
+    .section-head {
+      --node-size: 11px;
+      --node-top: 0.46rem;
+      font-size: 1.45rem;
+      margin-bottom: 1.9rem;
+    }
     .skill-row { grid-template-columns: 1fr; gap: 0.1rem; }
     .skill-row dt { line-height: 1.9; }
     .item h3 { font-size: 1.3rem; }
