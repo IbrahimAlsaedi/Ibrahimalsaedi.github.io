@@ -54,7 +54,7 @@
 
   a { color: inherit; text-decoration: none; }
 
-  .wrap { max-width: 64rem; margin: 0 auto; padding: 0 2rem; }
+  .wrap { max-width: 75rem; margin: 0 auto; padding: 0 2rem; }
 
   .skip { position: absolute; left: -9999px; background: var(--ink); color: var(--bg); padding: 0.7rem 1rem; }
   .skip:focus { left: 0; top: 0; z-index: 10; }
@@ -169,18 +169,20 @@
   .section:last-child { padding-bottom: 0; }
 
   .section-head {
-    /* Sized in em so the node scales with the heading at every viewport:
-       the line box is 1.05em tall, so its centre is 0.525em down, and the
-       dot is pulled up by half its own size. */
-    --node-size: 0.2em;
-    --node-top: 0.425em;
-    font-size: clamp(2.2rem, 5.6vw, 5.7rem);
+    /* Node sized in em so the dot always centres on the heading:
+       the line box is 1.02em tall, so its centre sits 0.51em down, and
+       the dot is pulled up by half its own size. */
+    --node-size: 0.19em;
+    --node-top: 0.415em;
+    /* A flat size, not a vw clamp. A clamp scales with the window and so
+       never actually hits its cap on a normal laptop. */
+    font-size: 5.7rem;
     font-weight: 500;
-    line-height: 1.05;
-    letter-spacing: 0.01em;
+    line-height: 1.02;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--ink);
-    margin-bottom: 2.4rem;
+    margin-bottom: 2.5rem;
   }
 
   .item { padding-bottom: 3rem; }
@@ -256,7 +258,10 @@
     }
     .node { --node-top: 0.5rem; }
     .node.filled { --node-top: 0.45rem; }
-    .section-head { margin-bottom: 1.8rem; }
+    .section-head {
+      font-size: clamp(2.1rem, 9vw, 3.4rem);
+      margin-bottom: 1.8rem;
+    }
     .skill-row { grid-template-columns: 1fr; gap: 0.1rem; }
     .skill-row dt { line-height: 1.9; }
     .item h3 { font-size: 1.3rem; }
