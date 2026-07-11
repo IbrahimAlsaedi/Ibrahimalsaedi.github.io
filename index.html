@@ -169,14 +169,13 @@
   .section:last-child { padding-bottom: 0; }
 
   .section-head {
-    /* Node sized in em so the dot always centres on the heading:
-       the line box is 1.02em tall, so its centre sits 0.51em down, and
-       the dot is pulled up by half its own size. */
-    --node-size: 0.19em;
-    --node-top: 0.415em;
+    /* Fixed node size: at this heading size an em-based dot would shrink
+       below the 9px entry dots, which would read as backwards. */
+    --node-size: 11px;
+    --node-top: 0.38rem;
     /* A flat size, not a vw clamp. A clamp scales with the window and so
        never actually hits its cap on a normal laptop. */
-    font-size: 2.85rem;
+    font-size: 1.425rem;
     font-weight: 500;
     line-height: 1.02;
     letter-spacing: 0;
@@ -259,8 +258,10 @@
     .node { --node-top: 0.5rem; }
     .node.filled { --node-top: 0.45rem; }
     .section-head {
-      font-size: clamp(1.5rem, 5vw, 1.9rem);
-      margin-bottom: 1.8rem;
+      --node-size: 10px;
+      --node-top: 0.33rem;
+      font-size: 1.25rem;
+      margin-bottom: 1.6rem;
     }
     .skill-row { grid-template-columns: 1fr; gap: 0.1rem; }
     .skill-row dt { line-height: 1.9; }
