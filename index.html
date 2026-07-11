@@ -3,91 +3,138 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ibrahim Alsaedi — Data Science</title>
-<meta name="description" content="Ibrahim Alsaedi — Master of Data Science student at the University of Melbourne. Interpretable ML and agentic LLM systems. Seeking data science and ML internships and graduate roles in Australia.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M2 18h6l3-10 5 18 4-14 2 6h8' fill='none' stroke='%23B3261E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<title>Ibrahim Alsaedi · Data Science</title>
+<meta name="description" content="Ibrahim Alsaedi, Master of Data Science student at the University of Melbourne. Interpretable ML and agentic LLM systems. Seeking data science and ML internships and graduate roles in Australia.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M2 18h6l3-10 5 18 4-14 2 6h8' fill='none' stroke='%23798777' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
 <style>
-  :root {
-    --bg: #FCFAF8;
-    --ink: #211D1B;
-    --muted: #6E635E;
-    --accent: #B3261E;
-    --rule: #E9E1DC;
-    --card: #FFFFFF;
-    --strip-bg: #FBEFEA;
-    --grid: #F3DCD4;
-    --grid-bold: #EBCCC2;
-    --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
-    --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-    --mono: "IBM Plex Mono", "Cascadia Code", Consolas, monospace;
+  /* ── Self-hosted display font ──
+     M PLUS Code Latin. Copyright 2021 The M+ FONTS Project Authors.
+     SIL Open Font License 1.1. See assets/FONT-LICENSE.txt */
+  @font-face {
+    font-family: "M PLUS Code Latin";
+    src: url("assets/mplus-code-latin.woff2") format("woff2");
+    font-weight: 100 700;
+    font-style: normal;
+    font-display: swap;
   }
+
+  :root {
+    /* Palette */
+    --cream:      #F8EDE3;
+    --sage-light: #BDD2B6;
+    --sage:       #A2B29F;
+    --sage-deep:  #798777;
+
+    /* Roles (ink + muted are darkened members of the same green family:
+       the four palette colours are all mid-to-light and none reaches
+       readable contrast as body text) */
+    --bg:     var(--cream);
+    --card:   #FFFAF3;
+    --band:   var(--sage-light);
+    --ink:    #26302A;
+    --muted:  #5F6B5D;
+    --accent: #4A5847;
+    --stroke: var(--sage-deep);
+    --rule:   #E2DED2;
+
+    --display: "M PLUS Code Latin", "Cascadia Code", Consolas, ui-monospace, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #121316;
-      --ink: #EAE6E2;
-      --muted: #9B938D;
-      --accent: #F2705F;
-      --rule: #26282D;
-      --card: #17181C;
-      --strip-bg: #15171C;
-      --grid: #212429;
-      --grid-bold: #2A2E35;
+      --bg:     #1C201C;
+      --card:   #232823;
+      --band:   #242C25;
+      --ink:    #F1E7DA;
+      --muted:  #A3AF9F;
+      --accent: #BDD2B6;
+      --stroke: var(--sage);
+      --rule:   #343B34;
     }
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
   body {
     background: var(--bg);
     color: var(--ink);
-    font: 400 1rem/1.65 var(--sans);
+    font: 400 1.0625rem/1.7 var(--sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-  a { color: inherit; text-decoration-color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  a:hover { color: var(--accent); }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 
-  .wrap { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem; }
+  a { color: inherit; text-decoration-color: var(--stroke); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--accent); text-decoration-color: currentColor; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 0 1.4rem; }
+  .prose { max-width: 40rem; }
+
+  .skip {
+    position: absolute; left: -9999px;
+    background: var(--ink); color: var(--bg);
+    padding: 0.7rem 1rem; border-radius: 0 0 6px 0;
+    font: 500 0.85rem var(--display);
+  }
+  .skip:focus { left: 0; top: 0; z-index: 10; color: var(--bg); }
 
   /* ── Hero ── */
-  .hero { padding: 4.5rem 0 2.75rem; }
+  .hero { padding: 4rem 0 3rem; }
+  .hero-top { display: flex; align-items: center; gap: 1.6rem; margin-bottom: 1.9rem; }
+
+  .portrait {
+    flex: 0 0 auto;
+    width: 108px; height: 108px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--band);
+    box-shadow: 0 2px 14px rgb(38 48 42 / 0.13);
+  }
+
   .kicker {
-    font: 500 0.75rem/1 var(--mono);
-    letter-spacing: 0.18em;
+    font: 500 0.78rem/1.4 var(--display);
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
   }
   h1 {
-    font: 600 clamp(2.4rem, 7vw, 3.6rem)/1.08 var(--serif);
-    letter-spacing: -0.015em;
-    margin: 0.9rem 0 1.1rem;
+    font: 600 clamp(2.1rem, 6.5vw, 3.1rem)/1.12 var(--display);
+    letter-spacing: -0.01em;
+    margin-top: 0.5rem;
   }
-  .lede { font-size: 1.125rem; max-width: 40rem; }
-  .lede strong { font-weight: 600; }
-  .sub { color: var(--muted); margin-top: 0.75rem; max-width: 40rem; }
-  .links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; margin-top: 1.6rem; font: 500 0.85rem/1 var(--mono); }
-  .links a { text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 3px; }
 
-  /* ── ECG strip (signature) ── */
-  .strip {
-    background-color: var(--strip-bg);
-    background-image:
-      linear-gradient(var(--grid-bold) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-bold) 1px, transparent 1px),
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+  .lede { font-size: 1.2rem; line-height: 1.62; }
+  .lede strong { font-weight: 600; color: var(--accent); }
+  .sub { color: var(--muted); margin-top: 1rem; }
+
+  .links {
+    display: flex; flex-wrap: wrap;
+    gap: 0.75rem 1.7rem;
+    margin-top: 2rem;
+    font: 500 0.9rem/1 var(--display);
+  }
+  .links a {
+    text-decoration: none;
+    border-bottom: 2px solid var(--stroke);
+    padding-bottom: 4px;
+  }
+  .links a:hover { border-bottom-color: var(--accent); }
+
+  /* ── ECG band (signature, from the capstone) ── */
+  .band {
+    background: var(--band);
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
     overflow: hidden;
   }
-  .strip svg { display: block; width: 100%; height: 180px; }
-  .strip .ecg {
+  .band svg { display: block; width: 100%; height: 150px; }
+  .ecg {
     fill: none;
     stroke: var(--accent);
-    stroke-width: 2.25;
+    stroke-width: 2.5;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-dasharray: 1000;
@@ -95,98 +142,151 @@
     animation: draw 2.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
   }
   @keyframes draw { to { stroke-dashoffset: 0; } }
-  .strip text {
-    font: 500 11px var(--mono);
-    letter-spacing: 0.08em;
+  .band text {
+    font: 500 11px var(--display);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    fill: var(--muted);
+    fill: var(--accent);
   }
-  .strip-caption {
-    font: 400 0.78rem/1.5 var(--mono);
+  .band-caption {
+    font: 400 0.85rem/1.6 var(--display);
     color: var(--muted);
-    padding: 0.6rem 0 0.7rem;
+    padding: 0.9rem 0 0;
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .strip .ecg { animation: none; stroke-dashoffset: 0; }
+    .ecg { animation: none; stroke-dashoffset: 0; }
   }
 
   /* ── Sections ── */
-  section { padding: 2.9rem 0 0.4rem; }
+  section { padding: 3.4rem 0 0.5rem; }
   .eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    font: 500 0.75rem/1 var(--mono);
-    letter-spacing: 0.2em;
+    display: flex; align-items: center; gap: 0.8rem;
+    font: 600 0.8rem/1 var(--display);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 1.7rem;
+    margin-bottom: 1.9rem;
   }
-  .eyebrow::before { content: ""; width: 1.4rem; height: 1px; background: var(--accent); }
+  .eyebrow::after {
+    content: "";
+    flex: 1; height: 1px;
+    background: var(--rule);
+  }
 
   /* Experience */
-  .job { padding-bottom: 2.1rem; }
-  .job + .job { border-top: 1px solid var(--rule); padding-top: 2.1rem; }
-  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
-  .job-head h3 { font: 600 1.15rem/1.3 var(--sans); }
-  .dates { font: 400 0.78rem/1.6 var(--mono); color: var(--muted); white-space: nowrap; }
-  .org { color: var(--muted); font-size: 0.92rem; margin-top: 0.15rem; }
-  .job ul { margin: 0.8rem 0 0 1.1rem; }
-  .job li { margin-bottom: 0.45rem; }
-  .job li::marker { color: var(--accent); }
+  .job { padding-bottom: 2.3rem; }
+  .job + .job { border-top: 1px solid var(--rule); padding-top: 2.3rem; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem 1.2rem; flex-wrap: wrap; }
+  .job-head h3 { font: 600 1.22rem/1.35 var(--sans); }
+  .dates {
+    font: 500 0.82rem/1.6 var(--display);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .org { color: var(--muted); font-size: 0.97rem; margin-top: 0.3rem; }
+  .job ul { margin: 1.1rem 0 0 1.25rem; }
+  .job li { margin-bottom: 0.7rem; padding-left: 0.25rem; }
+  .job li:last-child { margin-bottom: 0; }
+  .job li::marker { color: var(--stroke); }
 
   /* Projects */
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media (max-width: 680px) { .grid { grid-template-columns: 1fr; } }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
   .card {
     background: var(--card);
     border: 1px solid var(--rule);
-    border-radius: 6px;
-    padding: 1.25rem 1.3rem 1.35rem;
+    border-radius: 10px;
+    padding: 1.4rem 1.45rem 1.5rem;
   }
-  .card .tags { font: 400 0.72rem/1 var(--mono); color: var(--muted); letter-spacing: 0.04em; }
-  .card h3 { font: 600 1.02rem/1.35 var(--sans); margin: 0.55rem 0 0.5rem; }
-  .card p { font-size: 0.92rem; color: var(--muted); }
-  .card p a { color: var(--ink); }
+  .tags {
+    display: inline-block;
+    font: 500 0.73rem/1 var(--display);
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    background: var(--band);
+    border-radius: 999px;
+    padding: 0.42rem 0.7rem;
+  }
+  .card h3 { font: 600 1.08rem/1.4 var(--sans); margin: 0.85rem 0 0.5rem; }
+  .card p { font-size: 0.97rem; line-height: 1.65; color: var(--muted); }
 
   /* Skills */
-  .skills { display: grid; gap: 0.75rem; }
-  .skill-row { display: grid; grid-template-columns: 11.5rem 1fr; gap: 1rem; align-items: baseline; }
-  @media (max-width: 680px) { .skill-row { grid-template-columns: 1fr; gap: 0.15rem; } }
-  .skill-row dt { font: 500 0.75rem/1.8 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-  .skill-row dd { font-size: 0.95rem; }
+  .skills { display: grid; gap: 1.1rem; }
+  .skill-row { display: grid; grid-template-columns: 11rem 1fr; gap: 1.2rem; align-items: baseline; }
+  .skill-row dt {
+    font: 600 0.76rem/1.8 var(--display);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .skill-row dd { font-size: 1rem; line-height: 1.65; }
 
   /* Education */
-  .edu { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; padding: 0.85rem 0; }
+  .edu { display: flex; justify-content: space-between; align-items: baseline; gap: 0.4rem 1.2rem; flex-wrap: wrap; padding: 1.1rem 0; }
   .edu + .edu { border-top: 1px solid var(--rule); }
-  .edu h3 { font: 600 1rem/1.4 var(--sans); }
-  .edu .org { margin: 0; }
+  .edu h3 { font: 600 1.05rem/1.45 var(--sans); }
+  .edu .org { margin-top: 0.15rem; }
 
   /* Footer */
-  footer { margin-top: 3.2rem; border-top: 1px solid var(--rule); padding: 2.6rem 0 3.5rem; }
-  footer .beyond { font-size: 0.85rem; color: var(--muted); margin-bottom: 2.2rem; }
+  footer { margin-top: 3.8rem; border-top: 1px solid var(--rule); padding: 3rem 0 4rem; }
+  .beyond { font-size: 0.97rem; color: var(--muted); margin-bottom: 2.6rem; }
   .cta {
     display: inline-block;
-    font: 500 0.9rem/1 var(--mono);
+    font: 500 0.95rem/1 var(--display);
     background: var(--accent);
     color: var(--bg);
     text-decoration: none;
-    border-radius: 6px;
-    padding: 0.85rem 1.3rem;
+    border-radius: 8px;
+    padding: 0.95rem 1.5rem;
   }
-  .cta:hover { color: var(--bg); opacity: 0.9; }
-  footer .links { margin-top: 1.4rem; }
-  .fineprint { margin-top: 2.4rem; font: 400 0.72rem/1.6 var(--mono); color: var(--muted); }
+  .cta:hover { color: var(--bg); opacity: 0.88; }
+  footer .links { margin-top: 1.7rem; }
+  .fineprint {
+    margin-top: 2.8rem;
+    font: 400 0.8rem/1.7 var(--display);
+    color: var(--muted);
+  }
+
+  @media (max-width: 680px) {
+    body { font-size: 1rem; }
+    .hero { padding: 2.8rem 0 2.2rem; }
+    .hero-top { gap: 1.2rem; margin-bottom: 1.5rem; }
+    .portrait { width: 84px; height: 84px; }
+    .lede { font-size: 1.1rem; }
+    .grid { grid-template-columns: 1fr; }
+    .skill-row { grid-template-columns: 1fr; gap: 0.2rem; }
+    .band svg { height: 120px; }
+  }
 </style>
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <header class="hero wrap">
-  <p class="kicker">Melbourne, Australia · Data Science</p>
-  <h1>Ibrahim Alsaedi</h1>
-  <p class="lede">I build <strong>interpretable machine-learning models</strong> and <strong>agentic LLM systems</strong> — currently a Master of Data Science student at the University of Melbourne, graduating December 2026.</p>
-  <p class="sub">Looking for data science and ML internships and graduate roles in Australia. Especially interested in responsible AI, data governance, and fraud &amp; risk analytics.</p>
+  <div class="hero-top">
+    <picture>
+      <source
+        type="image/webp"
+        srcset="assets/portrait-320.webp 1x, assets/portrait-640.webp 2x">
+      <img
+        class="portrait"
+        src="assets/portrait-320.jpg"
+        srcset="assets/portrait-320.jpg 1x, assets/portrait-640.jpg 2x"
+        width="108" height="108"
+        alt="Portrait of Ibrahim Alsaedi">
+    </picture>
+    <div>
+      <p class="kicker">Melbourne, Australia</p>
+      <h1>Ibrahim Alsaedi</h1>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p class="lede">I build <strong>interpretable machine-learning models</strong> and <strong>agentic LLM systems</strong>. Right now I'm a Master of Data Science student at the University of Melbourne, graduating in December 2026.</p>
+    <p class="sub">I'm looking for data science and ML internships and graduate roles in Australia, and I'm especially drawn to responsible AI, data governance, and fraud and risk analytics.</p>
+  </div>
+
   <nav class="links" aria-label="Contact">
     <a href="mailto:ibrahim.a.alsaedi@gmail.com">Email</a>
     <a href="https://linkedin.com/in/ibrahim-alsaedi">LinkedIn</a>
@@ -194,46 +294,49 @@
   </nav>
 </header>
 
-<div class="strip" role="img" aria-label="An ECG trace with a section of movement noise labelled 'motion artefact' — from my capstone work classifying biosignal noise.">
-  <svg viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <path class="ecg" pathLength="1000" d="M0,110 h40
-      q10,-14 20,0 h12 l6,5 l8,-64 l9,78 l6,-19 h10 q16,-22 32,0 h50
-      q10,-14 20,0 h12 l6,5 l8,-64 l9,78 l6,-19 h10 q16,-22 32,0 h30
+<div class="band" role="img" aria-label="An ECG trace with a section of movement noise labelled 'motion artefact', from my capstone work classifying biosignal noise.">
+  <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="ecg" pathLength="1000" d="M0,100 h40
+      q10,-14 20,0 h12 l6,5 l8,-58 l9,72 l6,-19 h10 q16,-22 32,0 h50
+      q10,-14 20,0 h12 l6,5 l8,-58 l9,72 l6,-19 h10 q16,-22 32,0 h30
       l5,-8 l5,11 l4,-15 l5,13 l4,-10 l5,16 l4,-14 l5,10 l4,-12 l5,14 l4,-9 l5,4
       l5,-11 l5,13 l4,-16 l5,12 l4,-8 l5,15 l4,-13 l5,9 l4,-10 l5,12 l4,-7 l5,4 h30
-      q10,-14 20,0 h12 l6,5 l8,-64 l9,78 l6,-19 h10 q16,-22 32,0 h40
-      q10,-14 20,0 h12 l6,5 l8,-64 l9,78 l6,-19 h10 q16,-22 32,0 h50
-      q10,-14 20,0 h12 l6,5 l8,-64 l9,78 l6,-19 h10 q16,-22 32,0 h182" />
-    <text x="382" y="38" text-anchor="middle">motion artefact</text>
+      q10,-14 20,0 h12 l6,5 l8,-58 l9,72 l6,-19 h10 q16,-22 32,0 h40
+      q10,-14 20,0 h12 l6,5 l8,-58 l9,72 l6,-19 h10 q16,-22 32,0 h50
+      q10,-14 20,0 h12 l6,5 l8,-58 l9,72 l6,-19 h10 q16,-22 32,0 h182" />
+    <text x="382" y="32" text-anchor="middle">motion artefact</text>
   </svg>
 </div>
-<p class="strip-caption wrap">Lead II · 3,000+ biosignal recordings analysed · movement-noise classifier at 95% accuracy — from my current industry capstone.</p>
+<p class="band-caption wrap">From my current industry capstone: 3,000+ Lead II recordings, movement-noise classifier at 95% accuracy.</p>
 
-<main class="wrap">
+<main class="wrap" id="main">
+
   <section id="experience">
     <h2 class="eyebrow">Experience</h2>
+
     <article class="job">
       <div class="job-head">
-        <h3>Data Science Capstone — ML on biosignals</h3>
-        <span class="dates">Mar 2026 — present</span>
+        <h3>Data Science Capstone: ML on biosignals</h3>
+        <span class="dates">Mar 2026 – present</span>
       </div>
-      <p class="org">University of Melbourne × Biosignals Diagnostics · team of 5</p>
+      <p class="org">University of Melbourne with Biosignals Diagnostics · team of 5</p>
       <ul>
-        <li>Analysing device-noise patterns across 3,000+ biosignal recordings and developing ML models to classify noise types, supporting more reliable diagnostic reporting.</li>
-        <li>Personally responsible for the exploratory analysis of the ECG signals and for building the movement-noise classifier — currently at 95% accuracy.</li>
+        <li>Analysing device-noise patterns across 3,000+ biosignal recordings and developing ML models to classify noise types, which supports more reliable diagnostic reporting.</li>
+        <li>Personally responsible for the exploratory analysis of the ECG signals and for building the movement-noise classifier, currently at 95% accuracy.</li>
         <li>Building and maintaining a structured noise taxonomy to improve diagnostic signal quality.</li>
       </ul>
     </article>
+
     <article class="job">
       <div class="job-head">
         <h3>Founding Engineer</h3>
-        <span class="dates">Apr — Jul 2026</span>
+        <span class="dates">Apr – Jul 2026</span>
       </div>
       <p class="org"><a href="https://whitakr-base.web.app">Whitakr</a> · early-stage medico-legal AI startup, Melbourne</p>
       <ul>
-        <li>Designed the agentic architecture that turns bundles of medical records into structured legal chronologies: per-document relevance scoring, cross-document linking, timeline-gap detection and missing-record flags.</li>
-        <li>Built the RAG pipeline and LLM orchestration across multi-step document-analysis workflows.</li>
-        <li>Delivered a working end-to-end demo to a prospective law-firm client — a full case chronology in ~20 minutes of wall time, an estimated 80% reduction in manual paralegal effort.</li>
+        <li>Designed the agentic architecture that turns bundles of medical records into structured legal chronologies, covering per-document relevance scoring, cross-document linking, timeline-gap detection and missing-record flags.</li>
+        <li>Built the RAG pipeline and the LLM orchestration across multi-step document-analysis workflows.</li>
+        <li>Delivered a working end-to-end demo to a prospective law-firm client: a full case chronology in roughly 20 minutes of wall time, an estimated 80% reduction in manual paralegal effort.</li>
       </ul>
     </article>
   </section>
@@ -244,12 +347,12 @@
       <article class="card">
         <p class="tags">Python · LLM · Automation</p>
         <h3>Job-search agent</h3>
-        <p>An autonomous pipeline that scrapes three job boards twice daily, scores every new posting against my resume with an LLM, hard-filters roles international students aren't eligible for, and emails me a ranked digest.</p>
+        <p>An autonomous pipeline that scrapes three job boards twice daily, scores every new posting against my resume with an LLM, filters out roles international students aren't eligible for, and emails me a ranked digest.</p>
       </article>
       <article class="card">
         <p class="tags">TensorFlow · PyTorch · SHAP</p>
         <h3>Heart-disease risk from ECG data</h3>
-        <p>CNN-GRU and tree-based models predicting structural heart disease, with SHAP and Brier scores for clinically interpretable, responsible reporting of results.</p>
+        <p>CNN-GRU and tree-based models predicting structural heart disease, using SHAP and Brier scores so the results stay clinically interpretable.</p>
       </article>
       <article class="card">
         <p class="tags">TabNet · Statistical ML</p>
@@ -259,7 +362,7 @@
       <article class="card">
         <p class="tags">NLP · AWS</p>
         <h3>Cost-of-living sentiment</h3>
-        <p>A cloud NLP pipeline tracking Australian public sentiment on the cost-of-living crisis, deployed end-to-end on AWS.</p>
+        <p>A cloud NLP pipeline tracking Australian public sentiment on the cost-of-living crisis, deployed end to end on AWS.</p>
       </article>
     </div>
   </section>
@@ -270,7 +373,7 @@
       <div class="skill-row"><dt>Languages</dt><dd>Python, R, SQL</dd></div>
       <div class="skill-row"><dt>ML &amp; AI</dt><dd>TensorFlow, PyTorch, TabNet, deep learning, NLP, agentic LLM systems, RAG pipelines, model interpretability (SHAP)</dd></div>
       <div class="skill-row"><dt>Data analysis</dt><dd>Statistical modelling, data visualisation, preprocessing, feature engineering</dd></div>
-      <div class="skill-row"><dt>Cloud &amp; tools</dt><dd>AWS (Certified Developer — Associate), AWS IAM, Git/GitHub/GitLab, Jupyter, API integration</dd></div>
+      <div class="skill-row"><dt>Cloud &amp; tools</dt><dd>AWS (Certified Developer Associate), AWS IAM, Git, GitHub, GitLab, Jupyter, API integration</dd></div>
       <div class="skill-row"><dt>Spoken</dt><dd>Arabic (native), English (fluent)</dd></div>
     </dl>
   </section>
@@ -282,34 +385,38 @@
         <h3>Master of Data Science</h3>
         <p class="org">The University of Melbourne</p>
       </div>
-      <span class="dates">Mar 2025 — Dec 2026 (expected)</span>
+      <span class="dates">Mar 2025 – Dec 2026 (expected)</span>
     </div>
     <div class="edu">
       <div>
         <h3>Bachelor of Computer Science</h3>
         <p class="org">Taif University</p>
       </div>
-      <span class="dates">Sep 2019 — Aug 2024</span>
+      <span class="dates">Sep 2019 – Aug 2024</span>
     </div>
     <div class="edu">
       <div>
-        <h3>AWS Certified Developer — Associate</h3>
+        <h3>AWS Certified Developer, Associate</h3>
         <p class="org">Amazon Web Services</p>
       </div>
-      <span class="dates">Feb 2023 — Feb 2026</span>
+      <span class="dates">Feb 2023 – Feb 2026</span>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="wrap">
-    <p class="beyond">Beyond the desk — events lead at the Lebanese Students' Society UniMelb (120+ attendee events), volunteer at Sacred Heart Mission's op shop, and library organiser with Reading Out of Poverty.</p>
+    <p class="beyond prose">Beyond the desk, I'm the events lead at the Lebanese Students' Society at UniMelb, where I've run events for 120+ attendees. I also volunteer at Sacred Heart Mission's op shop and organise libraries with Reading Out of Poverty.</p>
+
     <h2 class="eyebrow">Get in touch</h2>
     <a class="cta" href="mailto:ibrahim.a.alsaedi@gmail.com">ibrahim.a.alsaedi@gmail.com</a>
+
     <nav class="links" aria-label="Profiles">
       <a href="https://linkedin.com/in/ibrahim-alsaedi">LinkedIn</a>
       <a href="Ibrahim_Alsaedi_CV.pdf">Resume (PDF)</a>
     </nav>
+
     <p class="fineprint">Melbourne, VIC · open to internships now and graduate roles from December 2026.</p>
   </div>
 </footer>

@@ -1,0 +1,10 @@
+# Raw source assets (kept locally, not served)
+*.heic
+IMG_*.jpg
+IMG_*.png
+MPLUSCodeLatin-VariableFont*.ttf
+
+# Scratch
+_*.html
+_try_*.jpg
+_preview_*.jpg

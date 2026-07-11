@@ -1,0 +1,12 @@
+M PLUS Code Latin
+Copyright 2021 The M+ FONTS Project Authors
+https://github.com/coz-m/MPLUS_FONTS
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+The full licence text and FAQ are available at: https://openfontlicense.org
+
+The file `mplus-code-latin.woff2` in this directory is a derivative of the
+upstream variable font: the width (wdth) axis is pinned to 100, the weight
+(wght) axis is retained over the range 100-700, the glyph set is subset to
+Latin, and the result is compressed to WOFF2. It is redistributed under the
+same SIL Open Font License, Version 1.1.
